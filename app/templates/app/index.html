@@ -1,0 +1,29 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+
+{% block nav %}
+    <div class="wrapper">
+        <div class="wrapper_category">
+            <p>Category</p>
+            <div class="category">
+                {% for category in categories %}
+                   <p>
+                       <a> {{ category.name }}</a>
+                   </p> <!-- <span>{{1}}</span>-->
+                {% endfor %}
+            </div>
+        </div>
+        <div class="wrapper_body">
+            <div class="wrapper_books">
+                {% for book in books %}
+                    <ul class="books">
+                        <li class="book">{{ book.name }}</li>
+                        <li class="book">{{ book.author }}</li>
+                        <li class="book"><a href="{{ book.book.url }}">{{ book.book }}</a></li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
