@@ -1,0 +1,13 @@
+{% extends "app/base.html" %}
+
+{% block nav %}
+    <form action="{% url 'add_shelf' %}" method="post">
+        {% csrf_token %}
+        <input name="shelf" type="text">
+        {% for book in books %}
+            <input name="{{ book.name }}" type="checkbox">
+            {{ book.name }}
+        {% endfor %}
+        <button type="submit">Добавить</button>
+    </form>
+{% endblock %}

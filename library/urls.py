@@ -21,12 +21,21 @@ from django.conf import settings
 
 from app import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', views.index, name='index'),
-    path('addbook/', views.add_book, name='add_book')
+    path('category/<int:cat>/', views.index, name='category'),
+    path('shelf/<int:shelf>/', views.index, name='shelf'),
+
+    path('add_book/', views.add_book, name='add_book'),
+    path('add_shelf/', views.add_shelf, name='add_shelf'),
+
+    path('login/', views.LoginUser.as_view(), name='login'),
+    path('registration/', views.RegisterUser.as_view(), name='registration'),
+    path('logout/', views.logout, name='logout')
 ]
+
 
 
 if settings.DEBUG:
